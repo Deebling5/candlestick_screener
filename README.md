@@ -1,6 +1,8 @@
 # Stock Breakout Analysis
 This data analysis tool can present you with Breaking out, Consolidating, Volume breakouts, stocks near moving averages in realtime
 
+<img src="snip.png?raw=true" align="center" width="800" alt="after hours trades plot">
+
 ## Setup
 ```shell
 # should install requirements.txt packages
@@ -109,4 +111,3 @@ Right now we have 2 types
     a. data_500.py
     b. streamapp_500.py
 
-<img src="snip.png?raw=true" align="center" width="800" alt="after hours trades plot">
