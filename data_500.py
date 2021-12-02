@@ -10,7 +10,7 @@ def snapshot():
             symbol = line.split(",")[1]
             Name = line.split(",")[0]
             #data = yf.download(symbol, start="2021-10-01", end="2021-11-23")
-            data = yf.download(symbol, period="6mo", threads = True)
+            data = yf.download(symbol, period="9mo", threads = True)
             data.to_csv('datasets/daily/{}.csv'.format(Name))
     return {
         "code": "success"
