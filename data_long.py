@@ -2,6 +2,7 @@ import os, csv
 import yfinance as yf
 import pandas
 import time
+
 def snapshot():
     with open('datasets/long.csv') as f:
         for line in f:
@@ -15,10 +16,10 @@ def snapshot():
     return {
         "code": "success"
     }
-i = 1
-while True:
+# i = 1
+# while True:
     
-    snapshot()
-    time.sleep(300)
-    print(f'Ran {i} time')
-    i = i+1
+#     snapshot()
+#     time.sleep(300)
+#     print(f'Ran {i} time')
+#     i = i+1

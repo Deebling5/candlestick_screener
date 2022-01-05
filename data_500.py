@@ -2,7 +2,7 @@ import os, csv
 import yfinance as yf
 import pandas
 import time
-def snapshot():
+def snapshot_500():
     with open('datasets/Book1.csv') as f:
         for line in f:
             if "," not in line:
@@ -16,10 +16,10 @@ def snapshot():
         "code": "success"
     }
 
-i = 1
-while True:
+# i = 1
+# while True:
 
-    snapshot()
-    time.sleep(300)
-    print(f'Ran {i} time')
-    i = i+1
+#     snapshot()
+#     time.sleep(300)
+#     print(f'Ran {i} time')
+#     i = i+1
