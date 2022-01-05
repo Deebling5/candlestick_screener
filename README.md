@@ -1,3 +1,5 @@
+## This ReadME is strictly for main branch
+
 # Stock Breakout Analysis
 This data analysis tool can present you with Breaking out, Consolidating, Volume breakouts, stocks near moving averages in realtime
 
