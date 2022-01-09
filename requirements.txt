@@ -2,5 +2,6 @@ flask
 pandas
 yfinance
 streamlit
-tweepy
+tweepy == 3.9.0
 plotly
+tweet-preprocessor
