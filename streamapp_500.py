@@ -4,6 +4,9 @@ import streamlit as st
 from streamapp import *
 from data_long import *
 from data_500 import *
+from twitter import *
+import datetime
+import plotly.graph_objects as go
 
 Consol = []
 Break = []
@@ -174,6 +177,9 @@ with st.sidebar:
         
     if(st.button("Nifty 500 Snapshot")):
         snapshot_500()
+    st.write("---")
+    
+
     
 st.header(selected_analysis)
 analysis_dict[selected_analysis]()
@@ -181,4 +187,23 @@ analysis_dict[selected_analysis]()
 st.header(selected_analysis_w)
 analysis_dict_w[selected_analysis_w]()
 
+st.header('Twitter Search')
+date_since = st.date_input('Since', datetime.date(2021, 12, 20))
+numTweets = st.slider('Number of Tweets', 1, 500, 100)
+symbol = st.text_input('Enter Search Term')
 
+if symbol:
+    numRuns = 1
+    df = scraptweets(symbol, date_since, numTweets, numRuns)
+  
+    fig = go.Figure(data=[go.Table(
+        header=dict(values=list(df.columns),
+                    fill_color='paleturquoise',
+                    align='left'),
+        cells=dict(values=[df.Text, df.Username, df.Created, df.Retweeted, df.URL],
+                   fill_color='lavender',
+                   align='left',font_size=12))
+    ])
+
+
+    st.plotly_chart(fig,use_container_width=True)
