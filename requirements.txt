@@ -2,3 +2,5 @@ flask
 pandas
 yfinance
 streamlit
+tweepy
+plotly

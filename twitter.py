@@ -7,7 +7,6 @@ import json
 import pandas as pd
 import csv
 import re  # regular expression
-from textblob import TextBlob
 import string
 import preprocessor as p
 import os
