@@ -162,10 +162,10 @@ analysis_dict_w = {
 
 with st.sidebar:
     
-    selected_analysis = st.radio("Nifty 500 Analysis", list(analysis_dict.keys()))
+    selected_analysis = st.selectbox("Nifty 500 Analysis", list(analysis_dict.keys()))
     st.write("---")
     
-    selected_analysis_w = st.radio("Watchlist Analysis", list(analysis_dict_w.keys()))
+    selected_analysis_w = st.selectbox("Watchlist Analysis", list(analysis_dict_w.keys()))
     st.write("---")
 
     # Create a button
