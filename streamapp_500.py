@@ -40,8 +40,8 @@ def is_breaking_out(df, percentage=3):
     return False
 
 def consolbreak():
-    for filename in os.listdir('datasets/daily'):
-        df = pandas.read_csv('datasets/daily/{}'.format(filename))
+    for filename in os.listdir('datasets'):
+        df = pandas.read_csv('datasets/{}'.format(filename))
     
         if is_consolidating(df):
             consol1 = filename + " is consolidating"
@@ -53,8 +53,8 @@ def consolbreak():
 
 
 def vol_break():
-    for filename in os.listdir('datasets/daily'):
-        df = pandas.read_csv('datasets/daily/{}'.format(filename))
+    for filename in os.listdir('datasets'):
+        df = pandas.read_csv('datasets/{}'.format(filename))
         
         recent_candlesticks = df[-30:-1]
         global Volume
@@ -66,8 +66,8 @@ def vol_break():
             colab.append(vol1)
 
 def moving_avg():
-    for filename in os.listdir('datasets/daily'):
-        df = pandas.read_csv('datasets/daily/{}'.format(filename))
+    for filename in os.listdir('datasets'):
+        df = pandas.read_csv('datasets/{}'.format(filename))
         
         df['100ma'] = df['Adj Close'].rolling(window=100, min_periods=0).mean()
         df['200ma'] = df['Adj Close'].rolling(window=200, min_periods=0).mean()
