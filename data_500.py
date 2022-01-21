@@ -1,7 +1,10 @@
-import os, csv
+import os
+import csv
 import yfinance as yf
 import pandas
 import time
+
+
 def snapshot_500():
     with open('datasets/Book1.csv') as f:
         for line in f:
@@ -10,11 +13,15 @@ def snapshot_500():
             symbol = line.split(",")[1]
             Name = line.split(",")[0]
             #data = yf.download(symbol, start="2021-10-01", end="2021-11-23")
-            data = yf.download(symbol, period="9mo", threads = True)
-            data.to_csv('datasets/{}.csv'.format(Name))
+            data = yf.download(symbol, period="9mo", threads=True)
+            data.to_csv('datasets/daily/{}.csv'.format(Name))
     return {
         "code": "success"
     }
+
+
+
+# For running on console infinitely
 
 # i = 1
 # while True:

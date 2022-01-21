@@ -19,7 +19,6 @@ nulldf = []
 
 def is_consolidating(df, percentage=2.5):
     recent_candlesticks = df[-15:]
-    #print(percentage)
     max_close = recent_candlesticks['Close'].max()
     min_close = recent_candlesticks['Close'].min()
 
@@ -181,13 +180,13 @@ with st.sidebar:
         "Nifty 500 Analysis", list(analysis_dict.keys()))
     st.write("---")
 
-    selected_analysis_w = st.selectbox(
-        "Watchlist Analysis", list(analysis_dict_w.keys()))
-    st.write("---")
+    #selected_analysis_w = st.selectbox(
+    #    "Watchlist Analysis", list(analysis_dict_w.keys()))
+    #st.write("---")
 
-    # Create a button
-    if(st.button("Watchlist Snapshot")):
-        snapshot()
+    ## Create a button
+    #if(st.button("Watchlist Snapshot")):
+    #    snapshot()
 
     if(st.button("Nifty 500 Snapshot")):
         snapshot_500()
@@ -197,8 +196,8 @@ with st.sidebar:
 st.header(selected_analysis)
 analysis_dict[selected_analysis]()
 
-st.header(selected_analysis_w)
-analysis_dict_w[selected_analysis_w]()
+#st.header(selected_analysis_w)
+#analysis_dict_w[selected_analysis_w]()
 
 st.header('Twitter Search')
 date_since = st.date_input('Since', datetime.date(2021, 12, 20))
