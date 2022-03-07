@@ -1,4 +1,3 @@
-## This ReadME is strictly for main branch
 
 # Stock Breakout Analysis
 This data analysis tool can present you with Breaking out, Consolidating, Volume breakouts, stocks near moving averages in realtime
@@ -7,12 +6,17 @@ This data analysis tool can present you with Breaking out, Consolidating, Volume
 
 ## Setup
 ```shell
-# should install requirements.txt packages
-# Try it in Anaconda (Has a better success rate!)
-
-$ conda activate base
 $ pip3 install -r requirements.txt
 ```
+## How to Run quickly?
+
+1. Clone the Repo
+2. install Requirements
+3. Run below command in CMD or other console.
+```shell
+streamlit run streamapp_500.py
+```
+4. A browser window will pop will Nifty Explorer tool open.
 
 ## Usage
 This section will show some of the functionality of each class; however, it is by no means exhaustive.
@@ -29,7 +33,7 @@ def snapshot():
                 continue
             symbol = line.split(",")[1]
             Name = line.split(",")[0]
-            data = yf.download(symbol, period="6mo", threads = True) 
+            data = yf.download(symbol, period="9mo", threads = True) 
             data.to_csv('datasets/long/{}.csv'.format(Name))
     return {
         "code": "success"
@@ -37,6 +41,9 @@ def snapshot():
 
 # valid intervals: 1m,2m,5m,15m,30m,60m,90m,1h,1d,5d,1wk,1mo,3mo
 # Valid periods : 1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max
+
+# Its set to 9 months by default for calculating 200 MA correctly
+
 ```
 
 ### Updating data
@@ -49,15 +56,16 @@ while True:
     i = i+1
 ```
 
-### Building a portfolio
-Build your portfolio by adding the stocks in >long/long.csv in format below
+### Building a Custom Watchlist
+Build your portfolio by adding the stocks in /long/long.csv in format below
 
 ```excel
-Tata Chemicals,TATACHEM.NS ; Tata Coffee,TATACOFFEE.NS
+Tata Chemicals,TATACHEM.NS 
+Tata Coffee,TATACOFFEE.NS
 ```
 ### Analysis 
 
-#### Analysis technique
+#### Analysis technique : Moving Average
 ```python
     def moving_avg(df):
     df['100ma'] = df['Adj Close'].rolling(window=100, min_periods=0).mean() #for 100 moving avg
@@ -95,21 +103,6 @@ Tata Chemicals,TATACHEM.NS ; Tata Coffee,TATACOFFEE.NS
 Run the Streamlit server by hitting the commmand
 
 ```shell
-streamlit run streamapp.py
+streamlit run streamapp_500.py
 ```
-
-### Models Types currently hosted
-Right now we have 2 types
-
-#### Long
-    Some 50-55 stocks under my radar
-    Use - 
-    a. data_long.py
-    b. streamapp.py
-
-#### Nifty 500
-    500 top stocks in Nifty
-    Use - 
-    a. data_500.py
-    b. streamapp_500.py
 
