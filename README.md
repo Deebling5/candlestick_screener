@@ -4,6 +4,8 @@ This data analysis tool can present you with Breaking out, Consolidating, Volume
 
 <img src="snip.png?raw=true" align="center" width="800" alt="after hours trades plot">
 
+<img src="2nd_snip.png?raw=true" align="center" width="800" alt="after hours trades plot">
+
 ## Setup
 ```shell
 $ pip3 install -r requirements.txt
