@@ -16,10 +16,10 @@ import datetime
 # Authenticating Twitter API
 # Obtain your Twitter credentials from your twitter developer account
 
-consumer_key = '8IFlfq7vWmFSiNCT9DMTkl5nU'
-consumer_secret = 'HLP7pzDOrMfBEny10vJD7qgVSomhiq4SYv7uSAcZP1TLTjxbZ3'
-access_key = '957162914-9KeVhyjAjStWo3FnICdTRN34Jcx2kZ3gadgM7jDz'
-access_secret = 'Liv3BoFCubjJlWpq3LIt6LUikS9bRRmh3tuVxMsmQUwI6'
+consumer_key = ''
+consumer_secret = ''
+access_key = '-'
+access_secret = ''
 
 # Pass your twitter credentials to tweepy via its OAuthHandler
 
