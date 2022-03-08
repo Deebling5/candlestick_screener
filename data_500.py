@@ -15,9 +15,11 @@ def snapshot_500():
             #data = yf.download(symbol, start="2021-10-01", end="2021-11-23")
             data = yf.download(symbol, period="9mo", threads=True)
             data.to_csv('datasets/daily/{}.csv'.format(Name))
-    return {
-        "code": "success"
-    }
+
+
+def single_stock(Name, symbol):
+        data = yf.download(symbol, period="9mo", threads=True)
+        data.to_csv('datasets/single_stock_data/{}.csv'.format(Name))
 
 
 

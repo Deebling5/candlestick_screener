@@ -6,8 +6,10 @@ from nifty_algo_500 import *
 from data_long import *
 from data_500 import *
 from twitter import *
-import datetime
+from datetime import date
 import plotly.graph_objects as go
+
+from stock_specific import *
 
 
 
@@ -22,34 +24,37 @@ st.set_page_config(
     #}
 )
 
-page = st.sidebar.selectbox("Choose a page", ["Nifty 500 Explorer", "Twitter Search", 'Testing'])
+page = st.sidebar.selectbox(
+    "Choose a page", ['Stock Search', "Twitter Search", "Nifty 500 Explorer"])
+
 
 def consolidated():
-    consolbreak()
+    Consol, Break = consolbreak()
+    
     Consolidated = pd.DataFrame(Consol, columns=['Consolidate'])
     st.table(Consolidated)
 
 
 def breakout():
-    consolbreak()
+    Consol, Break = consolbreak()
     Breakout = pd.DataFrame(Break, columns=['Breakout'])
     st.table(Breakout)
 
 
 def vol_breakout():
-    vol_break()
+    colab = vol_break()
     Vol_Breakout = pd.DataFrame(colab, columns=['Volume Breakout'])
     st.table(Vol_Breakout)
 
 
 def hundredma():
-    moving_avg()
+    ma, tma = moving_avg()
     hundredma = pd.DataFrame(ma, columns=['Hundred_MA'])
     st.table(hundredma)
 
 
 def twohundredma():
-    moving_avg()
+    ma, tma = moving_avg()
     twohundredma = pd.DataFrame(tma, columns=['two_Hundred_MA'])
     st.table(twohundredma)
 
@@ -112,14 +117,14 @@ analysis_dict_w = {
 
 if page == "Nifty 500 Explorer":
     
+    st.sidebar.write("---")
     st.title('Nifty 500 Explorer')
-    st.write("---")
-    
-    if(st.button("Pull Data")):
+       
+    if(st.sidebar.button("Pull Data")):
         snapshot_500()
-    st.write("---")
+    
         
-    selected_analysis = st.selectbox(
+    selected_analysis = st.sidebar.selectbox(
         "Select Analysis", list(analysis_dict.keys()))
     st.write("---")
 
@@ -142,7 +147,8 @@ elif page == "Twitter Search":
     #analysis_dict_w[selected_analysis_w]()
     
     st.title('Twitter Search')
-    date_since = st.date_input('Since', datetime.date(2021, 12, 20))
+    today = date.today()
+    date_since = st.date_input('Since', today)
     numTweets = st.slider('Number of Tweets', 1, 500, 100)
     symbol = st.text_input('Enter Search Term')
 
@@ -162,4 +168,31 @@ elif page == "Twitter Search":
         st.plotly_chart(fig, use_container_width=True)
 
 else:
-    st.title('Test app')
+    st.title('Stock Search')
+    
+    valid_intervals = ['1d','5d','1wk','1mo','3mo']
+    Valid_periods = ['9mo', '1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max']
+    
+    
+    col1, col2 = st.columns(2)
+    
+    inter = col1.selectbox("Select Interval:", valid_intervals)
+    per = col2.selectbox("Select Period:", Valid_periods)
+    
+    df = pd.read_csv('symb.csv')
+    list1 = df['Symbol'].tolist()
+    symbol = st.selectbox('Symbols', list1)
+
+    with st.expander("Show Chart"):
+        fig, hunma, twoma, twentyma, cmp, state = stock_specific(symbol, per, inter)
+        st.plotly_chart(fig, use_container_width=True)
+    
+    col4, col1, col2, col3 = st.columns(4)
+    
+    col4.metric("CMP", cmp, state)
+    col1.metric("Two Hundred MA", twoma)
+    col2.metric("Hundred MA", hunma)
+    col3.metric("Twenty One MA", twentyma)
+    
+    #st.dataframe(data)
+    

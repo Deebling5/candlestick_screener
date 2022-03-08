@@ -17,8 +17,9 @@ $ pip3 install -r requirements.txt
 streamlit run streamapp_500.py
 ```
 4. A browser window will pop will Nifty Explorer tool open.
+5. Pull latest data from button on top and Run your favourite analysis from list
 
-## Usage
+## Technicalities
 This section will show some of the functionality of each class; however, it is by no means exhaustive.
 
 ### Getting data
