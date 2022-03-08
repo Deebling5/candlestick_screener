@@ -1,19 +1,18 @@
 
-# Stock Breakout Analysis
-** Candle Screener **
-Candle Screener has 3 functionalities :
+# Candlestick Screener
+Candlestick Screener has 3 functionalities :
 
-1. Nifty 500 Explorer - This data analysis tool can present you with Breaking out, Consolidating, Volume breakouts, stocks near moving averages in realtime.
+1. Stock Search - Get candle screener chart with 100ma, 200ma, 21ma of your selected stock from list of ~1800 stocks on NSE
 
-<img src="snip.png?raw=true" align="center" width="800" alt="after hours trades plot">
+<img src="2nd_snip.png?raw=true" align="center" width="800" alt="after hours trades plot">
 
 1.1. Expand Show Chart and this candle stick chart will open.
 
 <img src="cs.png?raw=true" align="center" width="800" alt="after hours trades plot">
 
-2. Stock Search - Get candle screener chart with 100ma, 200ma, 21ma of your selected stock from list of ~1800 stocks on NSE
+2. Nifty 500 Explorer - This data analysis tool can present you with Breaking out, Consolidating, Volume breakouts, stocks near moving averages in realtime.
 
-<img src="2nd_snip.png?raw=true" align="center" width="800" alt="after hours trades plot">
+<img src="snip.png?raw=true" align="center" width="800" alt="after hours trades plot">
 
 3. Twitter Search - Search with keyword with date and number of tweets and you will get all related tweets (I use it to get latest tweets on my favourite stocks)
 
